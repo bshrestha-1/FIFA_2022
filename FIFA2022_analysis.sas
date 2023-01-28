@@ -103,3 +103,30 @@ proc sgplot data=total_goals_by_team (obs=7);
 run;
 
 
+/*-----------------------------------------------------------------------------*/
+
+
+/* Calculate total goals for each team1 */
+proc sort data=NEWRSLT.import_fifa;
+    by team1;
+run;
+
+
+proc means data=NEWRSLT.import_fifa noprint sum;
+    by team1;
+    var conceded_team1;
+    output out=team1_total_conceded sum=conceded_team1;
+run;
+
+
+/* Calculate total goals conceded for each team2 */
+proc sort data=NEWRSLT.import_fifa;
+    by team2;
+run;
+
+proc means data=NEWRSLT.import_fifa noprint sum;
+    by team2;
+    var conceded_team2;
+    output out=team2_total_conceded sum=conceded_team2;
+run;
+
