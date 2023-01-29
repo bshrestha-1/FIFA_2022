@@ -130,3 +130,35 @@ proc means data=NEWRSLT.import_fifa noprint sum;
     output out=team2_total_conceded sum=conceded_team2;
 run;
 
+/* Merge the results into a single dataset */
+data total_conceded_by_team;
+    merge team1_total_conceded(rename=(team1=team))
+          team2_total_conceded(rename=(team2=team));
+    by team;
+    if conceded_team1=. then conceded_team1=0;
+    if conceded_team2=. then conceded_team2=0;
+    total_conceded = sum(conceded_team1, conceded_team2);
+    drop _type_ _freq_;
+run;
+
+/* Sort the dataset by total goals conceded in descending order */
+proc sort data=total_conceded_by_team;
+    by descending total_conceded;
+run;
+
+/* Display the results */
+proc print data=total_conceded_by_team;
+    var team conceded_team1 conceded_team2 total_conceded;
+run;
+
+/* Create the bar chart */
+proc sgplot data=total_conceded_by_team (obs=7);
+	label conceded_team2="Goals conceded at away";
+	label total_conceded="Total Goals Conceded";
+    vbar team / response=total_conceded;
+    vbar team / response=conceded_team2;
+    xaxis discreteorder=data;
+    yaxis label="Total Goals Conceded";
+    title "Total Goals Conceded by Team";
+run;
+
