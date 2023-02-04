@@ -162,3 +162,12 @@ proc sgplot data=total_conceded_by_team (obs=7);
     title "Total Goals Conceded by Team";
 run;
 
+
+/*-----------------------------------------------------------------------------*/
+
+/* Calculate possession difference and determine the winning team */
+data NEWRSLT.possession_analysis;
+    set NEWRSLT.import_fifa;
+    possession_diff = possession_team1 - possession_team2;
+
+ 
