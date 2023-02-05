@@ -170,4 +170,66 @@ data NEWRSLT.possession_analysis;
     set NEWRSLT.import_fifa;
     possession_diff = possession_team1 - possession_team2;
 
- 
+    if goals_team1 > goals_team2 then outcome = "Home Team Wins";
+    else if goals_team1 < goals_team2 then outcome = "Away Team Wins";
+    else outcome = "Draw";
+run;
+
+/* Analyze the relationship between possession and match outcome */
+proc means data=NEWRSLT.possession_analysis mean stddev;
+    class outcome;
+    var possession_diff;
+run;
+
+/* Create a box plot to visualize possession difference by outcome */
+proc sgplot data=NEWRSLT.possession_analysis;
+    vbox possession_diff / category=outcome;
+    xaxis label="Match Outcome";
+    yaxis label="Possession Difference (%)";
+    title "Possession Difference by Match Outcome";
+run;
+
+/* Logistic regression: Possession difference as a predictor of winning */
+data NEWRSLT.logistic_data;
+    set NEWRSLT.possession_analysis;
+    if outcome in ("Home Team Wins", "Away Team Wins") then do;
+        win = (outcome = "Home Team Wins");
+    end;
+run;
+
+proc logistic data=NEWRSLT.logistic_data descending;
+    model win = possession_diff;
+    title "Logistic Regression of Winning on Possession Difference";
+run;
+
+
+/*-----------------------------------------------------------------------------*/
+
+/* Calculate shot conversion rates */
+data NEWRSLT.conversion_analysis;
+    set NEWRSLT.import_fifa;
+    
+    /* Calculate conversion rate for each team */
+    if attempts_team1 > 0 then conversion_rate_team1 = goals_team1 / attempts_team1;
+    else conversion_rate_team1 = .;
+    
+    if attempts_team2 > 0 then conversion_rate_team2 = goals_team2 / attempts_team2;
+    else conversion_rate_team2 = .;
+run;
+
+/* Sort the data by team1 */
+proc sort data=NEWRSLT.conversion_analysis;
+    by team1;
+run;
+
+/* Calculate average conversion rate for Team 1 */
+proc means data=NEWRSLT.conversion_analysis noprint mean;
+    by team1;
+    var conversion_rate_team1;
+    output out=team1_conversion mean=avg_conversion_rate_team1;
+run;
+
+
+
+
+
