@@ -229,7 +229,24 @@ proc means data=NEWRSLT.conversion_analysis noprint mean;
     output out=team1_conversion mean=avg_conversion_rate_team1;
 run;
 
+/* Sort the data by team2 */
+proc sort data=NEWRSLT.conversion_analysis;
+    by team2;
+run;
 
+/* Calculate average conversion rate for Team 2 */
+proc means data=NEWRSLT.conversion_analysis noprint mean;
+    by team2;
+    var conversion_rate_team2;
+    output out=team2_conversion mean=avg_conversion_rate_team2;
+run;
+
+/* Merge the results into a single dataset */
+data NEWRSLT.total_conversion_rate;
+    merge team1_conversion(rename=(team1=team avg_conversion_rate_team1=conversion_rate))
+          team2_conversion(rename=(team2=team avg_conversion_rate_team2=conversion_rate));
+    by team;
+    
 
 
 
