@@ -247,6 +247,14 @@ data NEWRSLT.total_conversion_rate;
           team2_conversion(rename=(team2=team avg_conversion_rate_team2=conversion_rate));
     by team;
     
+    /* Handle cases where only one team data is available */
+    if conversion_rate=. then conversion_rate=avg_conversion_rate_team1;
+    if avg_conversion_rate_team2 ne . then conversion_rate=mean(conversion_rate, avg_conversion_rate_team2);
+    drop _type_ _freq_;
+run;
 
-
+/* Sort by conversion rate in descending order */
+proc sort data=NEWRSLT.total_conversion_rate;
+    by descending conversion_rate;
+run;
 
