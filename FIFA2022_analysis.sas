@@ -258,3 +258,17 @@ proc sort data=NEWRSLT.total_conversion_rate;
     by descending conversion_rate;
 run;
 
+/* Display the results */
+proc print data=NEWRSLT.total_conversion_rate;
+    var team conversion_rate;
+    title "Team Efficiency: Shot Conversion Rates";
+run;
+
+/* Create a bar chart for shot conversion rates */
+proc sgplot data=NEWRSLT.total_conversion_rate;
+    vbar team / response=conversion_rate;
+    xaxis discreteorder=data;
+    yaxis label="Shot Conversion Rate";
+    title "Team Efficiency: Shot Conversion Rates";
+run;
+
