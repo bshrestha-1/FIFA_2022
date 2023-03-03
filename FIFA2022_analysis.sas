@@ -272,3 +272,30 @@ proc sgplot data=NEWRSLT.total_conversion_rate;
     title "Team Efficiency: Shot Conversion Rates";
 run;
 
+/*-------------------------------------------------------------------*/
+
+data NEWRSLT.defensive_metrics;
+    set NEWRSLT.import_fifa;
+    
+    /* Calculate clean sheets */
+    clean_sheet_team1 = (goals_team2 = 0);
+    clean_sheet_team2 = (goals_team1 = 0);  
+run;
+
+proc sort data=NEWRSLT.defensive_metrics;
+    by team1;
+run;
+
+/* Aggregate Metrics for Team 1 */
+proc means data=NEWRSLT.defensive_metrics noprint sum;
+    by team1;
+    var clean_sheet_team1 goal_prevention_team1 df_pressures_team1 f_turnovers_team1;
+    output out=team1_defensive_metrics 
+        sum=clean_sheets_team1 
+        goal_preventions_team1 
+        df_pressures_team1 
+        f_turnovers_team1;
+run;
+
+
+
