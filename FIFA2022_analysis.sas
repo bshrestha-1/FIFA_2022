@@ -297,5 +297,20 @@ proc means data=NEWRSLT.defensive_metrics noprint sum;
         f_turnovers_team1;
 run;
 
+proc sort data=NEWRSLT.defensive_metrics;
+    by team2;
+run;
+
+/* Aggregate Metrics for Team 2 */
+proc means data=NEWRSLT.defensive_metrics noprint sum;
+    by team2;
+    var clean_sheet_team2 goal_prevention_team2 df_pressures_team2 f_turnovers_team2;
+    output out=team2_defensive_metrics 
+        sum=clean_sheets_team2 
+        goal_preventions_team2 
+        df_pressures_team2 
+        f_turnovers_team2;
+run;
+
 
 
