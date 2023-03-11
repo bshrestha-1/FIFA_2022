@@ -312,5 +312,33 @@ proc means data=NEWRSLT.defensive_metrics noprint sum;
         f_turnovers_team2;
 run;
 
+/* Merge Metrics for Both Teams */
+data NEWRSLT.total_defensive_metrics;
+    merge team1_defensive_metrics (rename=(team1 =team)) team2_defensive_metrics(rename=(team2 =team));
+    by team;
+    
+    /* Handle cases where data might be missing */
+    if clean_sheets_team1 = . then clean_sheets_team1 = 0;
+    if goal_preventions_team1 = . then goal_preventions_team1 = 0;
+    if df_pressures_team1 = . then df_pressures_team1 = 0;
+    if f_turnovers_team1 = . then f_turnovers_team1 = 0;
+    if clean_sheets_team2 = . then clean_sheets_team2 = 0;
+    if goal_preventions_team2 = . then goal_preventions_team2 = 0;
+    if df_pressures_team2 = . then df_pressures_team2 = 0;
+    if f_turnovers_team2 = . then f_turnovers_team2 = 0;
+    
+    
+    /* Summing up values from both teams */
+    clean_sheets = sum(clean_sheets_team1, clean_sheets_team2);
+    goal_preventions = sum(goal_preventions_team1, goal_preventions_team2);
+    defensive_pressures = sum(df_pressures_team1, df_pressures_team2);
+    forced_turnovers = sum(f_turnovers_team1, f_turnovers_team2);
+    drop _type_ _freq_;
+	
+ 
+
+
+
+
 
 
