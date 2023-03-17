@@ -335,7 +335,27 @@ data NEWRSLT.total_defensive_metrics;
     forced_turnovers = sum(f_turnovers_team1, f_turnovers_team2);
     drop _type_ _freq_;
 	
- 
+    /* Create a Composite Defensive Performance Score */
+    defensive_performance_score = 
+        0.4 * clean_sheets + 
+        0.25 * goal_preventions + 
+        0.2 * defensive_pressures + 
+        0.15 * forced_turnovers;
+
+    run;
+    
+ /* Sort by Defensive Performance Score in Descending Order */
+proc sort data=NEWRSLT.total_defensive_metrics;
+    by descending defensive_performance_score;
+run;
+
+/* Display the Results */
+proc print data=NEWRSLT.total_defensive_metrics;
+    var team clean_sheets goal_preventions defensive_pressures forced_turnovers defensive_performance_score;
+    title "Defensive Performance Metric by Team";
+run;
+
+
 
 
 
