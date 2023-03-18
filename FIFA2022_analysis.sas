@@ -312,6 +312,8 @@ proc means data=NEWRSLT.defensive_metrics noprint sum;
         f_turnovers_team2;
 run;
 
+
+
 /* Merge Metrics for Both Teams */
 data NEWRSLT.total_defensive_metrics;
     merge team1_defensive_metrics (rename=(team1 =team)) team2_defensive_metrics(rename=(team2 =team));
@@ -355,10 +357,14 @@ proc print data=NEWRSLT.total_defensive_metrics;
     title "Defensive Performance Metric by Team";
 run;
 
-
-
-
-
+/* Create a bar chart for defensive performance score */
+proc sgplot data=NEWRSLT.total_defensive_metrics;
+    vbar team / response=defensive_performance_score;
+    xaxis discreteorder=data;
+    Label team = "Countries";
+    yaxis label="Defensive Performance Score";
+    title "Team Defensive Performance Metrics";
+run;
 
 
 
