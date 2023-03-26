@@ -36,8 +36,10 @@ run;
 /* Clean possession data by removing % and converting to numeric */
 data NEWRSLT.import_fifa;
     set NEWRSLT.import_fifa;
-    possession_team1 = input(compress(possession_team1, '%'), 8.);
-    possession_team2 = input(compress(possession_team2, '%'), 8.);
+    possession_team1 = input(compress(possession_team1, '%'), best12.);
+    possession_team2 = input(compress(possession_team2, '%'), best12.);
+    possession_team1_num = input(compress(possession_team1, '%'), best12.);
+    possession_team2_num = input(compress(possession_team2, '%'), best12.);
 run;
 
 /* Calculate total goals for each team1 */
@@ -86,11 +88,10 @@ run;
 /* Display the results */
 proc print data=total_goals_by_team;
     var team goals_team1 goals_team2 total_goals;
-    
 run;
 
 /* Create the bar chart */
-proc sgplot data=total_goals_by_team (obs=7);
+proc sgplot data=total_goals_by_team;
 	label goals_team1="Home Goals";
 	label goals_team2="Away Goals";
 	label total_goals="Total Goals";
@@ -152,7 +153,7 @@ proc print data=total_conceded_by_team;
 run;
 
 /* Create the bar chart */
-proc sgplot data=total_conceded_by_team (obs=7);
+proc sgplot data=total_conceded_by_team ;
 	label conceded_team2="Goals conceded at away";
 	label total_conceded="Total Goals Conceded";
     vbar team / response=total_conceded;
@@ -201,6 +202,66 @@ proc logistic data=NEWRSLT.logistic_data descending;
     model win = possession_diff;
     title "Logistic Regression of Winning on Possession Difference";
 run;
+/*-----------------------------------------------------------------------------*/
+
+proc sort data=NEWRSLT.import_fifa;
+    by team1;
+run;
+
+/* Step 2A: Calculate total possession for Team 1 */
+proc means data=NEWRSLT.import_fifa noprint;
+    by team1;
+    var possession_team1_num;
+    output out=team1_possession mean=avg_possession_team1;
+run;
+
+proc sort data=NEWRSLT.import_fifa;
+    by team2;
+run;
+
+/* Step 2B: Calculate total possession for Team 2 */
+proc means data=NEWRSLT.import_fifa noprint;
+    by team2;
+    var possession_team2_num;
+    output out=team2_possession mean=avg_possession_team2;
+run;
+
+/* Step 2C: Merge the possession data for both teams */
+data NEWRSLT.total_possession;
+    merge team1_possession(rename=(team1=team avg_possession_team1=avg_possession))
+          team2_possession(rename=(team2=team avg_possession_team2=avg_possession));
+    by team;
+
+    /* Handle cases where only one team's data is available */
+    if missing(avg_possession) then avg_possession = 0;
+
+    /* Combine data from team1 and team2 */
+    avg_possession = mean(avg_possession, avg_possession_team2);
+    
+    drop _type_ _freq_;
+run;
+
+/* Sort by average possession in descending order */
+proc sort data=NEWRSLT.total_possession;
+    by descending avg_possession;
+run;
+
+/* Display the results */
+proc print data=NEWRSLT.total_possession;
+    var team avg_possession;
+    title "Team Average Possession per Match";
+run;
+
+/* Create a bar chart for average possession */
+proc sgplot data=NEWRSLT.total_possession;
+    vbar team / response=avg_possession;
+    xaxis discreteorder=data;
+    yaxis label="Average Possession (%)";
+    title "Team Average Possession per Match";
+run;
+
+
+
 
 
 /*-----------------------------------------------------------------------------*/
