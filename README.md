@@ -6,7 +6,7 @@ This repository analyzes FIFA team performances based on metrics such as goals s
 
 ## Data Used
 
-The data used in this analysis is obtained through web scraping from  <a href = "www.fifa.com">FIFA</a>. The dataset has 78 attributes and 64 observations. For this study, I used the following key variables:
+The data used in this analysis is obtained through web scraping from  <a href = "https://www.fifa.com/en/tournaments/mens/worldcup/qatar2022/teams/argentina/stats">FIFA</a>. The dataset has 78 attributes and 64 observations. For this study, I used the following key variables:
 
   - Goals scored: The number of goals scored by each team.
   - Goals Conceded: The number of goals conceded by each team.
