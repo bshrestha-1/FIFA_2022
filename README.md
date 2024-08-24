@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository analyzes FIFA team performances based on metrics such as goals scored, goals conceded, possession, and shot conversion rates. The analysis aims to provide insights into team efficiency, defensive performance, and the relationship between possession and match outcomes.
+This repository analyzes FIFA team performances based on metrics such as goals scored, goals conceded, possession, and shot conversion rates. The analysis aims to provide insights into team efficiency, defensive performance, and the relationship between possession and match outcomes. Moreover, I wanted to test my SAS skills to the test, so instead of doing with python, I chose SAS. 
 
 ## Data Used
 
