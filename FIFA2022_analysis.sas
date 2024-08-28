@@ -3,7 +3,6 @@ libname NewRslt "/home/u63983979/Fifa_analysis/lib";
 
 Filename REFILE '/home/u63983979/Fifa_analysis/Fifa_world_cup_matches.csv';
 
-/* Importing files*/
 proc import datafile= REFILE  replace
 	dbms= csv
 	out=NEWRSLT.import_fifa;
@@ -69,7 +68,7 @@ proc means data=NEWRSLT.import_fifa noprint sum;
 
 run;
 
-/* Merge the results into a single dataset */
+/* Merge */
 data total_goals_by_team;
     merge team1_total_goals(rename=(team1=team))
           team2_total_goals(rename=(team2=team));
@@ -80,7 +79,7 @@ data total_goals_by_team;
     drop _type_ _freq_;
 run;
 
-/* Sort the dataset by total goals in descending order */
+/* Sort  */
 proc sort data=total_goals_by_team;
     by descending total_goals;
 run;
@@ -142,7 +141,7 @@ data total_conceded_by_team;
     drop _type_ _freq_;
 run;
 
-/* Sort the dataset by total goals conceded in descending order */
+/* Sort  */
 proc sort data=total_conceded_by_team;
     by descending total_conceded;
 run;
