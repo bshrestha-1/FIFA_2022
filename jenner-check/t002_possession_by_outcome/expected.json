@@ -1,0 +1,23 @@
+{
+  "_captured_at": "2026-07-27T04:59:32.078145+00:00",
+  "_captured_run_id": "r_69ed041fb8884decb93db8d4870eb25c",
+  "status": "ok",
+  "exit_code": 0,
+  "log_contains": [
+    "NOTE: Wrote possession_analysis (64 rows, 20 columns).",
+    "NOTE: PROC MEANS statement used."
+  ],
+  "output_contains": [
+    "Possession Difference by Match Outcome",
+    "Away Team Wins",
+    "Home Team Wins"
+  ],
+  "log_does_not_contain": [
+    "ERROR:",
+    "[JENNER-ERROR"
+  ],
+  "diagnostics": {
+    "parse_warnings": [],
+    "runtime_warnings": []
+  }
+}

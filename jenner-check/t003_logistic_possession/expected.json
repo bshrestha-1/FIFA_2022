@@ -1,0 +1,23 @@
+{
+  "_captured_at": "2026-07-27T04:59:32.078145+00:00",
+  "_captured_run_id": "r_64e6085d95c4482ebe99cadae7707e92",
+  "status": "ok",
+  "exit_code": 0,
+  "log_contains": [
+    "NOTE: Wrote logistic_data (64 rows, 21 columns).",
+    "NOTE: PROC LOGISTIC completed. Results written to: ./ods_output/logistic_results.spec.json"
+  ],
+  "output_contains": [
+    "Logistic Regression of Winning on Possession Difference",
+    "possession_diff",
+    "Odds Ratio Estimates"
+  ],
+  "log_does_not_contain": [
+    "ERROR:",
+    "[JENNER-ERROR"
+  ],
+  "diagnostics": {
+    "parse_warnings": [],
+    "runtime_warnings": []
+  }
+}

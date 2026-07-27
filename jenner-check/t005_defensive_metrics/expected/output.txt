@@ -1,0 +1,36 @@
+                                          Defensive Performance Metric by Team
+
+  Obs            team  clean_sheets  goal_preventions  defensive_pressures  forced_turnovers  defensive_performance_score
+    1  MOROCCO                    4                77                 2516               544                       605.65
+    2  CROATIA                    2                82                 2113               548                        526.1
+    3  FRANCE                     1                80                 1986               524                        496.2
+    4  JAPAN                      0                62                 1829               319                       429.15
+    5  ARGENTINA                  3                45                 1688               494                       424.15
+    6  NETHERLANDS                2                67                 1550               412                       389.35
+    7  BRAZIL                     2                34                 1477               361                       358.85
+    8  AUSTRALIA                  2                63                 1383               307                        339.2
+    9  POLAND                     2                72                 1354               270                        330.1
+   10  PORTUGAL                   1                51                 1267               303                          312
+   11  COSTA RICA                 1                63                 1257               221                        300.7
+   12  UNITED STATES              2                34                 1150               293                       283.25
+   13  SWITZERLAND                1                41                 1150               280                       282.65
+   14  KOREA REPUBLIC             1                50                 1139               242                          277
+   15  SENEGAL                    0                36                 1077               266                        264.3
+   16  ENGLAND                    3                45                  995               280                       253.45
+   17  IRAN                       1                35                  987               219                        239.4
+   18  CAMEROON                   1                44                  922               240                        231.8
+   19  GHANA                      0                44                  898               249                       227.95
+   20  TUNISIA                    2                31                  904               222                       222.65
+   21  URUGUAY                    2                29                  895               230                       221.55
+   22  SERBIA                     0                51                  848               226                       216.25
+   23  QATAR                      0                32                  886               171                       210.85
+   24  SPAIN                      2                23                  827               240                       207.95
+   25  CANADA                     0                29                  860               185                          207
+   26  SAUDI ARABIA               0                49                  803               215                        205.1
+   27  BELGIUM                    2                43                  824               180                       203.35
+   28  WALES                      0                45                  781               210                       198.95
+   29  GERMANY                    0                27                  781               233                        197.9
+   30  MEXICO                     1                23                  749               216                       188.35
+   31  ECUADOR                    1                22                  748               183                       182.95
+   32  DENMARK                    1                40                  669               211                       175.85
+

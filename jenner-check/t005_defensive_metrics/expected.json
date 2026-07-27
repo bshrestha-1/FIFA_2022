@@ -1,0 +1,23 @@
+{
+  "_captured_at": "2026-07-27T04:59:32.078145+00:00",
+  "_captured_run_id": "r_8ecca3851c7d4da4a23e830ba5bea056",
+  "status": "ok",
+  "exit_code": 0,
+  "log_contains": [
+    "NOTE: Wrote total_defensive_metrics (32 rows, 14 columns).",
+    "NOTE: PROC PRINT completed: 32 observations printed, 6 variables"
+  ],
+  "output_contains": [
+    "Defensive Performance Metric by Team",
+    "MOROCCO",
+    "CROATIA"
+  ],
+  "log_does_not_contain": [
+    "ERROR:",
+    "[JENNER-ERROR"
+  ],
+  "diagnostics": {
+    "parse_warnings": [],
+    "runtime_warnings": []
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "_captured_at": "2026-07-27T04:59:32.078145+00:00",
+  "_captured_run_id": "r_8f9e69f121d34f7d93e1cd6481e0913e",
+  "status": "ok",
+  "exit_code": 0,
+  "log_contains": [
+    "NOTE: Output dataset team1_total_goals has 32 observations",
+    "NOTE: PROC PRINT completed: 32 observations printed, 4 variables"
+  ],
+  "output_contains": [
+    "Total Goals by Team",
+    "FRANCE",
+    "ARGENTINA"
+  ],
+  "log_does_not_contain": [
+    "ERROR:",
+    "[JENNER-ERROR"
+  ],
+  "diagnostics": {
+    "parse_warnings": [],
+    "runtime_warnings": []
+  }
+}
