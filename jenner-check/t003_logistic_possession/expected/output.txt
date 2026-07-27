@@ -1,0 +1,41 @@
+                                Logistic Regression of Winning on Possession Difference
+
+                                     
+---------------------------  --------
+Number of Observations Read        64
+Number of Observations Used        64
+
+            Response Profile            
+    Probability modeled is win='1.0'    
+
+Ordered Value  win       Total Frequency
+-------------  --------  ---------------
+            1  0.0                    20
+            2  1.0                    29
+
+                                             
+---------------------------------------------
+Convergence criterion (GCONV=1E-8) satisfied.
+
+The LOGISTIC Procedure
+Response Variable: win
+
+Criterion     Value
+---------  --------
+AIC          91.592
+-2 Log L     87.592
+SC           95.909
+
+               Analysis of Maximum Likelihood Estimates               
+
+Parameter        Estimate  Standard Error  Wald Chi-Square  Pr > ChiSq
+---------------  --------  --------------  ---------------  ----------
+Intercept         -0.1808          0.2523           0.5131      0.4738
+possession_diff   -0.0081          0.0108           0.5611      0.4538
+
+                        Odds Ratio Estimates                         
+
+Effect           Point Estimate  95% Wald CL Lower  95% Wald CL Upper
+---------------  --------------  -----------------  -----------------
+possession_diff           0.992              0.971              1.013
+

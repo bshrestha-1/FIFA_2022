@@ -1,0 +1,36 @@
+                                         Team Efficiency: Shot Conversion Rates
+
+  Obs            team  conversion_rate
+    1  SAUDI ARABIA       0.3333333333
+    2  GHANA                    0.3125
+    3  COSTA RICA                 0.25
+    4  NETHERLANDS        0.2222222222
+    5  ECUADOR            0.2051282051
+    6  JAPAN                       0.2
+    7  AUSTRALIA          0.1916666667
+    8  ENGLAND            0.1764705882
+    9  FRANCE             0.1740740741
+   10  IRAN               0.1726190476
+   11  MOROCCO            0.1525974026
+   12  WALES              0.1428571429
+   13  SENEGAL            0.1277777778
+   14  GERMANY                  0.1125
+   15  ARGENTINA          0.1066666666
+   16  SWITZERLAND        0.1047619048
+   17  SERBIA                  0.09375
+   18  URUGUAY            0.0833333333
+   19  CANADA             0.0555555556
+   20  DENMARK                    0.05
+   21  KOREA REPUBLIC             0.05
+   22  UNITED STATES      0.0462962963
+   23  POLAND             0.0454545455
+   24  PORTUGAL           0.0416666667
+   25  MEXICO                     0.04
+   26  SPAIN              0.0357142857
+   27  BRAZIL                    0.025
+   28  CROATIA            0.0208333333
+   29  BELGIUM                       0
+   30  CAMEROON                      0
+   31  QATAR                         0
+   32  TUNISIA                       0
+

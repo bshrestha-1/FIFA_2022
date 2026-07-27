@@ -1,0 +1,49 @@
+NOTE: Option OBS changed to 100.
+NOTE: DATA work.import_fifa
+
+NOTE: Processing inline DATALINES (64 lines)
+
+NOTE: Read 64 rows from DATALINES.
+NOTE: Wrote work.import_fifa (64 rows, 16 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: DATA work.import_fifa
+
+
+NOTE: Read 64 rows from work.import_fifa.
+NOTE: Wrote work.import_fifa (64 rows, 16 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: DATA work.import_fifa
+
+
+NOTE: Read 64 rows from work.import_fifa.
+NOTE: Wrote work.import_fifa (64 rows, 18 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: DATA possession_analysis
+
+
+NOTE: Read 64 rows from work.import_fifa.
+NOTE: Wrote possession_analysis (64 rows, 20 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: DATA logistic_data
+
+
+NOTE: Read 64 rows from possession_analysis.
+NOTE: Wrote logistic_data (64 rows, 21 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: PROC LOGISTIC data=logistic_data
+
+NOTE: Using Python statsmodels.api.Logit version 0.14.6
+NOTE: ODS plot written: logistic_oddsratio.spec.json
+NOTE: ODS plot written: logistic_roc.spec.json
+NOTE: PROC LOGISTIC ODS Graphics generated.
+NOTE: PROC LOGISTIC completed. Results written to: ./ods_output/logistic_results.spec.json

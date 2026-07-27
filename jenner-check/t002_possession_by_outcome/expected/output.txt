@@ -1,0 +1,14 @@
+                                         Possession Difference by Match Outcome
+
+                                                  The MEANS Procedure
+
+                                         Analysis Variable : possession_diff
+
+                                                     N
+                                 outcome           Obs            Mean         Std Dev
+                                 -----------------------------------------------------
+                                 Away Team Wins     20       4.6500000      23.1181747
+                                 Draw               15       1.0666667      19.2036703
+                                 Home Team Wins     29      -1.3448276      26.6569153
+                                 -----------------------------------------------------
+

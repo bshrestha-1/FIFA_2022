@@ -1,0 +1,7 @@
+{
+  "bundle": "t003_logistic_possession",
+  "source_file": "FIFA2022_analysis.sas",
+  "source_blob_sha": "9efb906d336441c797f245df535007b86ed88f95",
+  "source_commit": "b2e9d60db386af2ef87918ee83f9e0124b5d81dc",
+  "notes": "Author's PROC LOGISTIC of match win on possession difference (descending), including the win-flag DATA step; data inline from the CSV."
+}
